@@ -1,0 +1,22 @@
+{
+  "name": "special-fiesta",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Rumiantsev Oleksii <rumiantsev.oleksii@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/o-rumiantsev/special-fiesta.git"
+  },
+  "bugs": {
+    "url": "https://github.com/o-rumiantsev/special-fiesta/issues"
+  },
+  "homepage": "https://github.com/o-rumiantsev/special-fiesta#readme",
+  "scripts": {
+    "fmt": "prettier --write '**/*.js'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
+}
