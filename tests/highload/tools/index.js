@@ -1,5 +1,5 @@
 'use strict';
 
-const { startApp, closeApp } = require('./promisify');
+const { startApp, closeApp, startTest } = require('./promisify');
 
-module.exports = { startApp, closeApp };
+module.exports = { startApp, closeApp, startTest };

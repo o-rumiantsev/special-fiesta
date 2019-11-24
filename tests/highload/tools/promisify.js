@@ -3,7 +3,7 @@
 const startApp = (server, config) => {
   return new Promise((res, rej) => {
     try {
-      server.listen(config, res);
+      const app = server.listen(config, () => res(app));
     } catch (err) {
       rej(err);
     }
@@ -20,4 +20,13 @@ const closeApp = server => {
   });
 };
 
-module.exports = { startApp, closeApp };
+const startTest = (test, testconfig) => {
+  return new Promise((rej, res) => {
+    test(testconfig, (err, result) => {
+      if (err) return rej(err);
+      res(result);
+    });
+  });
+};
+
+module.exports = { startApp, closeApp, startTest };

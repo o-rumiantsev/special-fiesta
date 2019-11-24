@@ -1,21 +1,20 @@
 'use strict';
 
-const { promisify } = require('util');
 const autocannon = require('autocannon');
 
-const { closeApp, startApp } = require('./tools');
+const { closeApp, startApp, startTest } = require('./tools');
 const { autocannonConfig, appConfig } = require('./config');
 const apps = require('./apps');
 
 const test = async apps => {
   try {
     for await (const app of apps) {
-      await startApp(app, appConfig);
+      const server = await startApp(app, appConfig);
       console.log(`App has been inited.`);
-      const result = await promisify(autocannon(autocannonConfig));
+      const result = await startTest(autocannon, autocannonConfig);
       console.log(`App has been tested.`);
       console.table(result);
-      await closeApp(app);
+      await closeApp(server);
       console.log(`App has been closed.`);
     }
   } catch (error) {
