@@ -20,13 +20,4 @@ const closeApp = server => {
   });
 };
 
-const startTest = (test, testconfig) => {
-  return new Promise((rej, res) => {
-    test(testconfig, (err, result) => {
-      if (err) return rej(err);
-      res(result);
-    });
-  });
-};
-
-module.exports = { startApp, closeApp, startTest };
+module.exports = { startApp, closeApp };

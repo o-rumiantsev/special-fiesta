@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+app.use(express.json());
 
 const middlewares = [
   // 1) add err handlling
@@ -14,24 +15,24 @@ const middlewares = [
   // 2) parse body to body.json
   (req, res, next) => {
     try {
-      req.body = JSON.parse(req.body);
       next();
     } catch (err) {
       // handle err
       // req.ErrorHandler(err);
+      console.error(err);
     }
   },
   // 3) db request emulation
   (req, res, next) => setTimeout(next, 75),
   // 4) set headers
   (req, res, next) => {
-    res.setHeader(/* set headers */);
+    res.setHeader('Content-Type', 'application/json');
     next();
   },
   // 5) count factorial
   (req, res, next) => {
     const factorial = n => (n === 1 ? 1 : n * factorial(n - 1));
-    req.body = factorial(req.body.n);
+    req.body = { n: factorial(req.body.n) };
     next();
   },
   // 6) response
@@ -41,5 +42,6 @@ const middlewares = [
 ];
 
 app.use('/test', middlewares);
+process.on('uncaughtException', console.error);
 
 module.exports = app;
