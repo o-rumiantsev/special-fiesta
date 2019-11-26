@@ -19,6 +19,9 @@
     "multiparty": "^4.2.1"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "autocannon": "^4.4.0",
+    "express": "^4.17.1",
+    "koa": "^2.11.0"
   }
 }
