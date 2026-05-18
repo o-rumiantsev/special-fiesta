@@ -16,7 +16,7 @@
     "fmt": "prettier --write '**/*.js'"
   },
   "dependencies": {
-    "multiparty": "^4.2.1"
+    "multiparty": "^4.3.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
